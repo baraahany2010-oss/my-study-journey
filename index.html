@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090E1B">
+    <title>My Study Journey</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                <div>
+                    <h1>MY STUDY JOURNEY</h1>
+                    <p>Every day is a page of your story.</p>
+                </div>
+            </div>
+
+            <div class="header-status">
+                <span class="status-dot"></span>
+                PERSONAL ARCHIVE
+            </div>
+        </header>
+
+        <main>
+
+            <!-- WELCOME -->
+            <section class="welcome-section">
+                <div>
+                    <span class="eyebrow">YOUR PERSONAL ARCHIVE</span>
+                    <h2>Every day <span>counts.</span></h2>
+                    <p>Document your effort. Remember your progress.</p>
+                </div>
+            </section>
+
+            <!-- MODE SELECTION -->
+            <section class="auth-panel" id="modePanel">
+                <div class="section-header">
+                    <div>
+                        <span class="eyebrow">WELCOME TO THE JOURNEY</span>
+                        <h2>Choose your experience</h2>
+                    </div>
+                </div>
+
+                <div class="mode-buttons">
+
+                    <button type="button" class="mode-card" id="visitorBtn">
+                        <span class="mode-icon">◉</span>
+                        <strong>VISITOR</strong>
+                        <small>Explore the journey and view all daily entries.</small>
+                    </button>
+
+                    <button type="button" class="mode-card" id="ownerBtn">
+                        <span class="mode-icon">✦</span>
+                        <strong>OWNER</strong>
+                        <small>Access the private controls and manage entries.</small>
+                    </button>
+
+                </div>
+            </section>
+
+            <!-- OWNER LOGIN -->
+            <section class="auth-panel" id="ownerLoginPanel" hidden>
+
+                <div class="section-header">
+                    <div>
+                        <span class="eyebrow">OWNER ACCESS</span>
+                        <h2>Welcome back.</h2>
+                    </div>
+                </div>
+
+                <form id="ownerLoginForm">
+
+                    <div class="auth-field">
+                        <label for="ownerPassword">PASSWORD</label>
+
+                        <input type="password" id="ownerPassword" placeholder="Enter your owner password"
+                            autocomplete="current-password" required>
+                    </div>
+
+                    <div class="auth-buttons">
+                        <button type="submit" id="ownerLoginBtn">
+                            UNLOCK JOURNAL
+                        </button>
+
+                        <button type="button" id="backToModesBtn">
+                            BACK
+                        </button>
+                    </div>
+
+                    <p id="authMessage" class="auth-message">
+                        Enter your password to manage your journal.
+                    </p>
+
+                </form>
+            </section>
+
+            <!-- PASSWORD RECOVERY -->
+            <section class="auth-panel" id="recoveryPanel" hidden>
+
+                <div class="section-header">
+                    <div>
+                        <span class="eyebrow">ACCOUNT RECOVERY</span>
+                        <h2>Set a new password.</h2>
+                    </div>
+                </div>
+
+                <form id="recoveryForm">
+
+                    <div class="auth-field">
+                        <label for="newPassword">NEW PASSWORD</label>
+
+                        <input type="password" id="newPassword" placeholder="Enter your new password"
+                            autocomplete="new-password" minlength="8" required>
+                    </div>
+
+                    <div class="auth-field">
+                        <label for="confirmNewPassword">CONFIRM PASSWORD</label>
+
+                        <input type="password" id="confirmNewPassword" placeholder="Confirm your new password"
+                            autocomplete="new-password" minlength="8" required>
+                    </div>
+
+                    <div class="auth-buttons">
+                        <button type="submit" id="recoverySubmitBtn">
+                            SAVE NEW PASSWORD
+                        </button>
+                    </div>
+
+                    <p id="recoveryMessage" class="auth-message"></p>
+
+                </form>
+            </section>
+
+            <!-- ACTIVE MODE -->
+            <section class="user-panel" id="userPanel" hidden>
+
+                <div>
+                    <span class="eyebrow" id="modeLabel">VISITOR MODE</span>
+                    <h2 id="modeTitle">Welcome.</h2>
+                    <p id="modeDescription">You are viewing the public archive.</p>
+                </div>
+
+                <button type="button" id="exitModeBtn">EXIT</button>
+
+            </section>
+
+            <!-- DASHBOARD -->
+            <section class="dashboard" id="dashboard" hidden>
+
+                <!-- CALENDAR -->
+                <div class="calendar-panel">
+
+                    <div class="section-header">
+                        <div>
+                            <span class="eyebrow">YOUR TIMELINE</span>
+                            <h2>Calendar</h2>
+                        </div>
+
+                        <div class="calendar-controls">
+                            <button type="button" id="prevMonth">‹</button>
+                            <button type="button" id="nextMonth">›</button>
+                        </div>
+                    </div>
+
+                    <div class="month-title">
+                        <h3 id="monthYear">November 2026</h3>
+                        <button type="button" id="todayBtn">TODAY</button>
+                    </div>
+
+                    <div class="calendar-grid" id="calendar"></div>
+
+                </div>
+
+                <!-- DAILY ENTRY -->
+                <div class="entry-panel">
+
+                    <div class="section-header">
+                        <div>
+                            <span class="eyebrow">DAILY JOURNAL</span>
+                            <h2>Daily Entry</h2>
+                        </div>
+                    </div>
+
+                    <!-- SELECTED DATE -->
+                    <div class="selected-date">
+
+                        <span class="date-icon">◷</span>
+
+                        <div>
+                            <h3 id="selectedDate">Select a day</h3>
+                            <p id="entryModeHint">Your story for this day.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- VIDEO -->
+                    <div class="video-section">
+
+                        <div class="field-heading">
+                            <label>STUDY VIDEO</label>
+                            <span>VIDEO ARCHIVE</span>
+                        </div>
+
+                        <div class="upload-area" id="uploadArea" hidden>
+
+                            <div class="upload-icon">↑</div>
+
+                            <h3>Upload your study video</h3>
+
+                            <p>Choose a video from your device</p>
+
+                            <input type="file" id="videoInput" accept="video/*" hidden>
+
+                            <button type="button" id="uploadBtn">
+                                CHOOSE VIDEO
+                            </button>
+
+                        </div>
+
+                        <div id="videoPreview"></div>
+
+                    </div>
+
+                    <!-- NOTES -->
+                    <div class="notes-section">
+
+                        <div class="field-heading">
+                            <label>WHAT DID I STUDY?</label>
+                            <span>DAILY NOTES</span>
+                        </div>
+
+                        <textarea id="studyNotes" placeholder="Write about what you studied today..."
+                            readonly></textarea>
+
+                    </div>
+
+                    <!-- OWNER ACTIONS -->
+                    <div class="entry-actions" id="entryActions" hidden>
+
+                        <button type="button" class="save-button" id="saveBtn">
+                            SAVE DAILY ENTRY <span>→</span>
+                        </button>
+
+                        <button type="button" class="delete-button" id="deleteBtn">
+                            DELETE THIS ENTRY
+                        </button>
+
+                    </div>
+
+                    <p class="save-status" id="saveStatus">
+                        Choose Visitor or Owner to begin.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>MY STUDY JOURNEY © 2026</p>
+            <p>BUILT ONE DAY AT A TIME.</p>
+        </footer>
+
+    </div>
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
